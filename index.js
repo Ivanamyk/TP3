@@ -1,4 +1,5 @@
 const url = "https://trabajopractico3-6f33f-default-rtdb.firebaseio.com";
+
 const init = () => {
     fetch(`${url}/users.json`)
         .then(response => response.json())
@@ -21,7 +22,7 @@ const createTable = (data) => {
             td.innerHTML = data[object][item];
             tr.appendChild(td);
         }
-        
+
     }
 }
 
