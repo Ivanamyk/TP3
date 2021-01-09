@@ -8,7 +8,7 @@ const init = () => {
         })
 };
 init();
-
+//TABLA
 const createTable = (data) => {
     const tbody = document.getElementById("tbody");
     tbody.innerHTML = "";
