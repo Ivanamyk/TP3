@@ -42,12 +42,12 @@ const createTable = (data) => {
         tr.appendChild(tdEdit);
 
         tbody.appendChild(tr);
+        
     }
 }
 
 
 // MODAL
-
 const inputName = document.getElementById("fullName");
 const inputEmail = document.getElementById("email");
 const inputAddress = document.getElementById("address");
@@ -77,8 +77,8 @@ const addUser = (event) => {
     })
 }
 
-const cargarForm = (id) => {
-    fetch(`${url}/users${id}.json`)
+const cargarForm = (object) => {
+    fetch(`${url}/users${object}.json`)
         .then((response) => {
             return response.json()
         }).then((data) => {
@@ -90,16 +90,23 @@ const cargarForm = (id) => {
         })
 }
 
-const eliminar = (object) => {
-    fetch(`${url}/users/${object}.json`, {
-        method: 'DELETE',        
-    })
-        .then(response => {
-            return response.json()
-        })
-        .catch(error => console.log(error))
-    }
+const reload =() => {
+    reload = location.reload();
+}
 
+ const eliminar = async(object) => {
+    await fetch(`${url}/users/${object}.json`, {
+        method: 'DELETE',      
+            })
+            .then(response => {
+                return response.json()
+            })
+            .catch(error => console.log(error))
+            reload()
+         }
+
+
+    
 const addUserButton = document.getElementById("saveUser");
 addUserButton.addEventListener('click', addUser);
 
