@@ -9,6 +9,7 @@ const init = () => {
         })
 };
 init();
+
 //TABLA
 const createTable = (data) => {
     const tbody = document.getElementById("tbody");
@@ -44,12 +45,14 @@ const createTable = (data) => {
     }
 }
 
+
 // MODAL
+
 const inputName = document.getElementById("fullName");
 const inputEmail = document.getElementById("email");
 const inputAddress = document.getElementById("address");
-const inputPhone = document.getElementById("phone");
-// const id = url.searchParams.get('fullName');
+const inputPhone = document.getElementById("phone"); 
+
 
 const addUser = (event) => {
     event.preventDefault();
@@ -75,7 +78,7 @@ const addUser = (event) => {
 }
 
 const cargarForm = (id) => {
-    fetch(`${url}users/${id}.json`)
+    fetch(`${url}/users${id}.json`)
         .then((response) => {
             return response.json()
         }).then((data) => {
@@ -87,6 +90,15 @@ const cargarForm = (id) => {
         })
 }
 
+const eliminar = (object) => {
+    fetch(`${url}/users/${object}.json`, {
+        method: 'DELETE',        
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => console.log(error))
+    }
 
 const addUserButton = document.getElementById("saveUser");
 addUserButton.addEventListener('click', addUser);
