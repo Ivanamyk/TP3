@@ -49,7 +49,7 @@ const inputName = document.getElementById("fullName");
 const inputEmail = document.getElementById("email");
 const inputAddress = document.getElementById("address");
 const inputPhone = document.getElementById("phone");
-// const id = url.searchParams.get('fullName');
+
 
 const addUser = (event) => {
     event.preventDefault();
