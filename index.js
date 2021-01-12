@@ -9,6 +9,7 @@ const init = () => {
         })
 };
 init();
+
 //TABLA
 const createTable = (data) => {
     const tbody = document.getElementById("tbody");
@@ -31,24 +32,36 @@ const createTable = (data) => {
         tr.appendChild(tdElim);
 
         const botonEditar = document.createElement('button');
-        botonEditar.addEventListener('click', () => {
-            window.location = `form.html?name=${object}`;
-        });
         botonEditar.innerText = 'Editar';
         botonEditar.setAttribute('class', 'btn btn-warning');
+        botonEditar.setAttribute('data-bs-toggle', 'modal');
+        botonEditar.setAttribute('data-bs-target', '#ModalEditar');
         const tdEdit = document.createElement('td');
         tdEdit.appendChild(botonEditar);
         tr.appendChild(tdEdit);
 
         tbody.appendChild(tr);
+
+        const editUserButton = document.getElementById("saveUserEdit");
+        editUserButton.addEventListener('click', () => {
+            editUser(object);
+        });
+
     }
+
 }
+
 
 // MODAL
 const inputName = document.getElementById("fullName");
 const inputEmail = document.getElementById("email");
 const inputAddress = document.getElementById("address");
 const inputPhone = document.getElementById("phone");
+
+const inputNameEdit = document.getElementById("fullNameEdit");
+const inputEmailEdit = document.getElementById("emailEdit");
+const inputAddressEdit = document.getElementById("addressEdit");
+const inputPhoneEdit = document.getElementById("phoneEdit");
 
 
 const addUser = (event) => {
@@ -74,20 +87,45 @@ const addUser = (event) => {
     })
 }
 
-const cargarForm = (id) => {
-    fetch(`${url}users/${id}.json`)
-        .then((response) => {
-            return response.json()
-        }).then((data) => {
-            console.log(data);
-            inputName.value = data.name
-            inputEmail.value = data.email
-            inputAddress.value = data.address
-            inputPhone.value = data.phone
-        })
+const reload = () => {
+    reload = location.reload();
 }
 
+const eliminar = async (object) => {
+    await fetch(`${url}/users/${object}.json`, {
+        method: 'DELETE',
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => console.log(error))
+    reload()
+}
+
+const editUser = (object) => {
+
+    const editUser = {
+        fullName: inputNameEdit.value,
+        email: inputEmailEdit.value,
+        address: inputAddressEdit.value,
+        phone: inputPhoneEdit.value
+    }
+
+    fetch(`${url}/users/${object}.json`, {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'Application/json'
+        },
+        body: JSON.stringify(editUser),
+    }).then((response) => {
+        return response.json()
+    }).then((data) => {
+        console.log(data)
+    })
+}
 
 const addUserButton = document.getElementById("saveUser");
 addUserButton.addEventListener('click', addUser);
+
+
 
