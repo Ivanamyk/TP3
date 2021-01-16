@@ -50,13 +50,14 @@ const createTable = (data) => {
 
         tbody.appendChild(tr);
 
-        const editUserButton = document.getElementById("saveUserEdit");
-        editUserButton.addEventListener('click', () => {
+        botonEditar.addEventListener('click', () => {
+            traerDatos(object);
+            const editUserButton = document.getElementById("saveUserEdit");
+            editUserButton.addEventListener('click', () => {
             editUser(object);
         });
-
+        });  
     }
-
 }
 
 
@@ -128,6 +129,24 @@ const editUser = (object) => {
         return response.json()
     }).then((data) => {
         console.log(data)
+    })
+}
+//Recarga modal al editar 
+
+const traerDatos = (object) => {
+    fetch(`${url}/users/${object}.json`, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'Application/json'
+        },
+    }).then((response) => {
+        return response.json()
+    }).then((data) => {
+        console.log(data)
+        document.getElementById("fullNameEdit").defaultValue = data.fullName;
+        document.getElementById("emailEdit").defaultValue = data.email;
+        document.getElementById("addressEdit").defaultValue = data.address;
+        document.getElementById("phoneEdit").defaultValue = data.phone;
     })
 }
 
