@@ -1,12 +1,16 @@
 const url = "https://trabajopractico3-6f33f-default-rtdb.firebaseio.com";
+// const params = new URLSearchParams(window.location.search)
+// const id = params.get('name');
+
 
 const init = () => {
     fetch(`${url}/users.json`)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            console.log(data)
             createTable(data);
         })
+        .catch(error => console.log(error))
 };
 init();
 
@@ -53,6 +57,7 @@ const createTable = (data) => {
         const editUserButton = document.getElementById("saveUserEdit");
         editUserButton.addEventListener('click', () => {
             editUser(object);
+
         });
 
     }
