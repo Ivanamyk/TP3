@@ -72,7 +72,7 @@ const inputEmailEdit = document.getElementById("emailEdit");
 const inputAddressEdit = document.getElementById("addressEdit");
 const inputPhoneEdit = document.getElementById("phoneEdit");
 
-const addUser = (event) => {
+const addUser = async (event) => {
     event.preventDefault();
 
     const newUser = {
@@ -82,7 +82,7 @@ const addUser = (event) => {
         phone: inputPhone.value
     }
 
-    fetch(`${url}/users.json`, {
+    await fetch(`${url}/users.json`, {
         method: "POST",
         headers: {
             'Content-Type': 'Application/json'
@@ -93,10 +93,14 @@ const addUser = (event) => {
     }).then((data) => {
         console.log(data)
     })
+    reload()
 }
 
 const reload = () => {
-    reload = location.reload();
+    
+    reload = window.location.reload();
+    return false;
+    
 }
 
 const eliminar = async (object) => {
@@ -110,7 +114,7 @@ const eliminar = async (object) => {
     reload()
 }
 
-const editUser = (object) => {
+const editUser = async (object) => {
 
     const editUser = {
         fullName: inputNameEdit.value,
@@ -119,7 +123,7 @@ const editUser = (object) => {
         phone: inputPhoneEdit.value
     }
 
-    fetch(`${url}/users/${object}.json`, {
+    await fetch(`${url}/users/${object}.json`, {
         method: "PUT",
         headers: {
             'Content-Type': 'Application/json'
@@ -130,6 +134,7 @@ const editUser = (object) => {
     }).then((data) => {
         console.log(data)
     })
+    reload()
 }
 //Recarga modal al editar 
 
@@ -150,8 +155,34 @@ const traerDatos = (object) => {
     })
 }
 
+const filtrar = async() => {
+    const filtro =inputFiltro.value
+    await fetch(`${url}/users.json?orderBy="fullName"&startAt="${filtro}"&endAt="${filtro}\uf8ff"`, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'Application/json',
+        },
+    }).then((response) => {
+        console.log(response.url)
+        return response.json()
+    }).then((data) => {
+        createTable(data)
+        console.log(data)
+    })
+
+}
+
+
 const addUserButton = document.getElementById("saveUser");
 addUserButton.addEventListener('click', addUser);
+
+const filterButton = document.getElementById("botonFiltro");
+filterButton.addEventListener('click', filtrar);
+
+const deleteFilterButton = document.getElementById("botonBorrarFiltro");
+deleteFilterButton.addEventListener('click', init);
+
+
 
 
 
