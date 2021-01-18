@@ -50,7 +50,7 @@
                         <div class="modal-body p-3 m-2">
                             <div class="form-group mb-3">
                                 <label>Name</label>
-                                <input type="text" class="form-control" id="fullName" maxlength="50" required>
+                                <input type="text" class="form-control" id="fullName" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label>Email</label>
@@ -58,7 +58,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label>Address</label>
-                                <textarea id="address" class="form-control" maxlength="60" required
+                                <textarea id="address" class="form-control" required
                                     style="margin-top: 0px; margin-bottom: 0px; height: 47px;"></textarea>
                             </div>
                             <div class="form-group mb-3">
@@ -115,9 +115,26 @@
                         <input type="phone" class="form-control" id="phoneEdit">
                     </div>
                 </div>
-                <div class="modal-footer bg-secondary">
+                <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                     <button id="saveUserEdit" type="submit" class="btn btn-success">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Borrar Confirmacion -->
+    <div class="modal fade example" id="modalBorrar" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to proceed?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    <button id="deleteUser" type="submit" class="btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>
