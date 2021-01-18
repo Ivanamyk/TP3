@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -14,37 +15,42 @@
     <title>Document</title>
 </head>
 
-<body>
-    <div class="container col-9">
+<body class="body1">
+    <div class="container col-9" id="index">
         <!-- Button trigger modal -->
         <div class="table-user">
             <div class="row">
                 <div class="col-6">
-                    <h2>Manage Employees</h2>
+                    <h2 class="titulo">Manage <b>Employees</b>
+                    </h2>
                 </div>
-                <div class="col-4">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Add New Employee
+                <div class="col-6">
+                    <button type="button" class="btn btn-success" id="btn-añadir" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        <span class="material-icons">
+                            add_circle </span>Add New Employee
                     </button>
                 </div>
             </div>
         </div>
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Busca un nombre..." aria-label="Busca un nombre" aria-describedby="basic-addon2" id="inputFiltro">
+            <input type="text" class="form-control" placeholder="Filter..." aria-label="Filter"
+                aria-describedby="basic-addon2" id="inputFiltro">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" id="botonFiltro">Filtrar</button>
+                <button class="btn btn-outline-secondary" type="button" id="botonFiltro">Filter</button>
             </div>
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="botonBorrarFiltro">Borrar</button>
-              </div>
-          </div>
+                <button class="btn btn-outline-secondary" type="button" id="botonBorrarFiltro">Unfilter</button>
+            </div>
+        </div>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="container col-10">
                     <div class="modal-content">
                         <div class="modal-header m-2">
-                            <h5 class="modal-title" id="exampleModalLabel">Add Employee</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Add
+                                Employee</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body p-3 m-2">
@@ -134,7 +140,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                    <button id="deleteUser" type="submit" class="btn btn-danger">Delete</button>
+                    <button id="deleteUser" type="submit" class="btn btn-dark">Delete</button>
                 </div>
             </div>
         </div>

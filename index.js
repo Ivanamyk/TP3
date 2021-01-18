@@ -47,17 +47,6 @@ const createTable = (data) => {
             eliminar(object);
         });
 
-        // const botonEliminar = document.createElement('button');
-        // botonEliminar.addEventListener('click', () => {
-        //     eliminar(object);
-        // });
-        // botonEliminar.innerText = 'Eliminar';
-        // botonEliminar.setAttribute('class', 'btn btn-danger');
-        // const tdElim = document.createElement('td');
-        // tdElim.appendChild(botonEliminar);
-        // tr.appendChild(tdElim);
-
-
         //Boton Editar
         const botonEditar = document.createElement('button');
         botonEditar.innerText = 'Edit';
@@ -91,40 +80,37 @@ const inputEmailEdit = document.getElementById("emailEdit");
 const inputAddressEdit = document.getElementById("addressEdit");
 const inputPhoneEdit = document.getElementById("phoneEdit");
 
-//giuli
 const addUser = async (event) => {
-//Validacion en Modal
-const validacion = () => {
-    const fullName = document.getElementById('fullName').value;
-    const email = document.getElementById('email').value;
-    const address = document.getElementById('address').value;
-    const phone = document.getElementById('phone').value;
-    const regExEmail = /\w+@\w+\.+(com)$/;
-    const regExPhone = /^[0-9\s-]+$/;
+    //Validacion en Modal
+    const validacion = () => {
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const address = document.getElementById('address').value;
+        const phone = document.getElementById('phone').value;
+        const regExEmail = /\w+@\w+\.+(com)$/;
+        const regExPhone = /^[0-9\s-]+$/;
 
-    if (fullName.lenght > 50) {
-        alert('El Nombre debe contener hasta 50 caracteres.')
-        return false;
+        if (fullName.lenght > 50) {
+            alert('El Nombre debe contener hasta 50 caracteres.')
+            return false;
+        }
+        if (!regExEmail.test(email)) {
+            alert('Email invalido. Intente de nuevo.')
+            return false;
+        }
+        if (address.lenght > 60) {
+            alert('La Direccion debe contener hasta 60 caracteres.')
+            return false;
+        }
+        if (!regExPhone.test(phone)) {
+            alert('El Telefono debe contener solo números, espacios o guión medio')
+            return false;
+        }
+        else {
+            return true;
+        }
     }
-    if (!regExEmail.test(email)) {
-        alert('Email invalido. Intente de nuevo.')
-        return false;
-    }
-    if (address.lenght > 60) {
-        alert('La Direccion debe contener hasta 60 caracteres.')
-        return false;
-    }
-    if (!regExPhone.test(phone)) {
-        alert('El Telefono debe contener solo números, espacios o guión medio')
-        return false;
-    }
-    else {
-        return true;
-    }
-}
-
-//Funcion Añadir Usuario (ivana)
-const addUser = (event) => {
+    //Funcion Añadir Usuario 
     event.preventDefault();
     //paso la validacion antes de hacer el POST asi corroboro los datos.
     if (validacion()) {
@@ -163,10 +149,10 @@ const addUser = (event) => {
 }
 
 const reload = () => {
-    
+
     reload = window.location.reload();
     return false;
-    
+
 }
 //Funcion Borrar Usuario
 const eliminar = async (object) => {
@@ -221,8 +207,8 @@ const traerDatos = (object) => {
     })
 }
 
-const filtrar = async() => {
-    const filtro =inputFiltro.value
+const filtrar = async () => {
+    const filtro = inputFiltro.value
     await fetch(`${url}/users.json?orderBy="fullName"&startAt="${filtro}"&endAt="${filtro}\uf8ff"`, {
         method: "GET",
         headers: {
@@ -245,4 +231,5 @@ filterButton.addEventListener('click', filtrar);
 
 const deleteFilterButton = document.getElementById("botonBorrarFiltro");
 deleteFilterButton.addEventListener('click', init);
+
 
