@@ -1,0 +1,104 @@
+/* STYLE TABLE */   
+.body1{
+    background-color: #f5f5f5
+}
+#index{
+    background-color: #fff;
+    padding-bottom: 20px;
+}
+.table-user{
+    background: #fff;
+    margin: 20px 0;
+    border-radius: 3px;
+    font-family: 'Varela Round', sans-serif;
+}
+.row{
+    background-color: #435d7d;
+    color: #fff;
+    padding: 16px 30px;
+}
+.titulo{
+    margin: 5px 0 0;
+    font-size: 24px;
+}
+
+#btn-añadir, .material-icons{
+    float: left;
+    margin-right: 5px;
+}
+#btn-añadir{
+    font-weight: 200;
+    background-color: #5cb85c;
+    display: inline-block;
+}
+#inputFiltro{
+    margin-right: 50px;
+    margin-left: 70px;
+    height: 35px;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: rgb(77, 77, 77);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#botonFiltro, #botonBorrarFiltro{
+    font-family: 'Varela Round', sans-serif;
+   border-color: transparent;
+   width: 75px;
+   font-size: 14px;
+   color:#f1f4ff
+}
+#botonFiltro{
+background-color: #6476b1;
+margin-right: 8px;
+}
+#botonBorrarFiltro{
+    background-color: #aaaab4;
+    margin-right: 7px;
+    }
+tr{
+    font-size: small;
+}
+th{
+    color:#435d7d;
+}
+.btn-danger, .btn-warning{
+    width: 70px;
+}
+
+/* STYLE MODAL */
+.modal-title{
+    font-size: 17px; 
+    font-weight: 100;
+}
+.modal-content{
+    font-size: 12px;
+}
+.modal-title, .modal-content{
+    font-family: 'Poppins', sans-serif;
+    color: #162552c7;
+}
+.modal-footer{
+    background-color: #ecf0f1;
+}
+#saveUser{
+    background-color:#34a547d3;
+    color: white;
+    margin-right: 22px;
+}
+#cancelUser{
+    background-color:#ffffff;
+    color:#494949;
+}
+#saveUser, #cancelUser {
+    font-size: 14px;
+    padding: 5px; 
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 2px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-color: #c4c4c4;
+}
+
+
