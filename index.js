@@ -91,6 +91,8 @@ const inputEmailEdit = document.getElementById("emailEdit");
 const inputAddressEdit = document.getElementById("addressEdit");
 const inputPhoneEdit = document.getElementById("phoneEdit");
 
+//giuli
+const addUser = async (event) => {
 //Validacion en Modal
 const validacion = () => {
     const fullName = document.getElementById('fullName').value;
@@ -121,7 +123,7 @@ const validacion = () => {
     }
 }
 
-//Funcion Añadir Usuario
+//Funcion Añadir Usuario (ivana)
 const addUser = (event) => {
     event.preventDefault();
     //paso la validacion antes de hacer el POST asi corroboro los datos.
@@ -145,10 +147,26 @@ const addUser = (event) => {
             console.log(data)
         }).then(init);
     }
+
+    await fetch(`${url}/users.json`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'Application/json'
+        },
+        body: JSON.stringify(newUser),
+    }).then((response) => {
+        return response.json()
+    }).then((data) => {
+        console.log(data)
+    })
+    reload()
 }
 
 const reload = () => {
-    reload = location.reload();
+    
+    reload = window.location.reload();
+    return false;
+    
 }
 //Funcion Borrar Usuario
 const eliminar = async (object) => {
@@ -163,7 +181,7 @@ const eliminar = async (object) => {
 }
 
 //Funcion Editar
-const editUser = (object) => {
+const editUser = async (object) => {
     const editUser = {
         fullName: inputNameEdit.value,
         email: inputEmailEdit.value,
@@ -171,7 +189,7 @@ const editUser = (object) => {
         phone: inputPhoneEdit.value
     }
 
-    fetch(`${url}/users/${object}.json`, {
+    await fetch(`${url}/users/${object}.json`, {
         method: "PUT",
         headers: {
             'Content-Type': 'Application/json'
@@ -181,7 +199,8 @@ const editUser = (object) => {
         return response.json()
     }).then((data) => {
         console.log(data)
-    }).then(init, location.reload());
+    })
+    reload()
 }
 
 //Recarga modal al editar 
@@ -202,6 +221,28 @@ const traerDatos = (object) => {
     })
 }
 
+const filtrar = async() => {
+    const filtro =inputFiltro.value
+    await fetch(`${url}/users.json?orderBy="fullName"&startAt="${filtro}"&endAt="${filtro}\uf8ff"`, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'Application/json',
+        },
+    }).then((response) => {
+        console.log(response.url)
+        return response.json()
+    }).then((data) => {
+        createTable(data)
+        console.log(data)
+    })
+}
+
 const addUserButton = document.getElementById("saveUser");
 addUserButton.addEventListener('click', addUser);
+
+const filterButton = document.getElementById("botonFiltro");
+filterButton.addEventListener('click', filtrar);
+
+const deleteFilterButton = document.getElementById("botonBorrarFiltro");
+deleteFilterButton.addEventListener('click', init);
 
