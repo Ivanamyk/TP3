@@ -29,7 +29,6 @@
 #btn-añadir{
     font-weight: 200;
     background-color: #5cb85c;
-    display: inline-block;
 }
 #inputFiltro{
     margin-right: 50px;
@@ -56,12 +55,11 @@ margin-right: 8px;
     background-color: #aaaab4;
     margin-right: 7px;
     }
-tr{
-    font-size: small;
-}
+
 th{
     color:#435d7d;
-}
+    font-size: 14px;
+
 .btn-danger, .btn-warning{
     width: 70px;
 }

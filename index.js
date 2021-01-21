@@ -35,7 +35,7 @@ const createTable = (data) => {
         //Boton Eliminar
         const botonEliminar = document.createElement('button');
         botonEliminar.innerText = 'Delete';
-        botonEliminar.setAttribute('class', 'btn btn-danger');
+        botonEliminar.setAttribute('class', 'btn btn-danger p-1');
         botonEliminar.setAttribute('data-bs-toggle', 'modal');
         botonEliminar.setAttribute('data-bs-target', '#modalBorrar');
         const tdElim = document.createElement('td');
@@ -50,7 +50,7 @@ const createTable = (data) => {
         //Boton Editar
         const botonEditar = document.createElement('button');
         botonEditar.innerText = 'Edit';
-        botonEditar.setAttribute('class', 'btn btn-warning');
+        botonEditar.setAttribute('class', 'btn btn-warning p-1');
         botonEditar.setAttribute('data-bs-toggle', 'modal');
         botonEditar.setAttribute('data-bs-target', '#ModalEditar');
         const tdEdit = document.createElement('td');
